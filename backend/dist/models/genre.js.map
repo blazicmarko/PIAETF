@@ -1,0 +1,1 @@
+{"version":3,"file":"genre.js","sourceRoot":"","sources":["../../src/models/genre.ts"],"names":[],"mappings":";;;;;AAAA,wDAAgC;AAEhC,MAAM,MAAM,GAAG,kBAAQ,CAAC,MAAM,CAAC;AAE/B,IAAI,MAAM,GAAG,IAAI,MAAM,CAAC;IACpB,IAAI,EAAE;QACF,IAAI,EAAE,MAAM;KACf;CACJ,CAAC,CAAC;AAEH,kBAAe,kBAAQ,CAAC,KAAK,CAAC,QAAQ,EAAE,MAAM,CAAC,CAAC"}
