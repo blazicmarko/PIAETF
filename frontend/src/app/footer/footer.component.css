@@ -1,0 +1,24 @@
+#futer {
+    width: 100%;
+    height: 120px;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #9F6426;
+    border-top: 2px solid #9F2926;
+}
+
+#ikonice {
+    display: flex;
+    justify-content: center;
+}
+
+#ikonice a {
+    margin-left: 10px;
+}
+
+#futer h2,
+h3 {
+    font-family: 'Raleway', sans-serif;
+}

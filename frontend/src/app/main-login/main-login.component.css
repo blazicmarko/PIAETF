@@ -1,0 +1,104 @@
+#welcome {
+    width: 100%;
+    height: 60px;
+}
+
+#welcome h1 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 35px;
+    font-weight: bold;
+    color: #9F6426;
+}
+
+#login {
+    width: 100%;
+    min-height: 40rem;
+    border-radius: 4px;
+    padding: 3rem 0rem;
+    font-weight: 700;
+}
+
+#login input {
+    width: 50%;
+    border-radius: 4px;
+}
+
+#login h3 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+}
+
+#neregistrovan {
+    margin-top: 50px;
+    color: #9F2926;
+}
+
+#registrovan {
+    margin-top: 50px;
+    color: #9F6426;
+}
+
+#tabelaLogin {
+    width: 50%;
+    margin: 0px auto;
+}
+
+#tabelaLogin input {
+    width: 80%;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+}
+
+.userLog {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+#dugmeLog {
+    text-align: center;
+}
+
+#dugmeLog button {
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    margin: 5px 5px;
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #9F6426;
+    border: 1px solid #9F6426;
+}
+
+#dugmeLog button:hover {
+    background-color: #D1A97F;
+}
+
+#dugmeLog a {
+    font-size: 20px;
+}
+
+#forgotPass {
+    font-size: 20px !important;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#forgotPass a {
+    border-bottom: 2px solid #9F2926;
+}
+
+#porukaLog {
+    text-align: center;
+    width: 100%;
+    color: #9F2926;
+    font-size: 27px;
+    margin-top: 15px;
+    font-weight: bold;
+}

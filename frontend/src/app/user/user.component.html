@@ -1,0 +1,277 @@
+<div id="ulogovan">
+    <h1>Dobrodošli {{user.name}}</h1>
+
+    <h4>Pretraga drugih profila</h4>
+    <input type='text' name='search.userName' [(ngModel)]='searchUsername' placeholder="Unesite korisničko ime">
+    <button (click)="search()">Pretraži</button>
+    <p>{{message}}</p>
+    <br>
+    <h3>Podaci Vašeg profila</h3>
+    <h4><a href="/user/password">Promeni lozinku</a></h4>
+    <table>
+        <tr>
+            <td>Ime:</td>
+            <td>
+                {{user.name}}
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime:</td>
+            <td>
+                {{user.surname}}
+            </td>
+        </tr>
+        <tr>
+            <td>Slika profila:</td>
+            <td>
+                <img [src]="user.picture">
+            </td>
+        </tr>
+        <tr>
+            <td>Korisničko ime:</td>
+            <td>
+                {{user.username}}
+            </td>
+        </tr>
+        <tr>
+            <td>Datum rođenja:</td>
+            <td>
+                {{user.date | date: "dd/MM/yyyy"}}
+            </td>
+        </tr>
+        <tr>
+            <td>Grad:</td>
+            <td>
+                {{user.city}}
+            </td>
+        </tr>
+        <tr>
+            <td>Država:</td>
+            <td>
+                {{user.state}}
+            </td>
+        </tr>
+        <tr>
+            <td>Mail:</td>
+            <td>
+                {{user.mail}}
+            </td>
+        </tr>
+
+    </table>
+    <button (click)="izmeniPodatke=true">Izmeni podatke</button>
+    <button (click)="izmeniPodatke=false">Izađi iz izmena</button>
+    <table *ngIf="izmeniPodatke == true">
+        <tr>
+            <td>Ime:</td>
+            <td>
+                <input type='text' name='name' [(ngModel)]='name'>
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime:</td>
+            <td>
+                <input type='text' name='surname' [(ngModel)]='surname'>
+            </td>
+        </tr>
+        <tr>
+            <td>Datum rođenja:</td>
+            <td>
+                <input type='date' name='date' [(ngModel)]='date'>
+            </td>
+        </tr>
+        <tr>
+            <td>Grad:</td>
+            <td>
+                <input type='text' name='city' [(ngModel)]='city'>
+            </td>
+        </tr>
+        <tr>
+            <td>Država:</td>
+            <td>
+                <input type='text' name='state' [(ngModel)]='state'>
+            </td>
+        </tr>
+        <tr>
+            <td>Mail:</td>
+            <td>
+                <input type='text' name='mail' [(ngModel)]='mail'>
+            </td>
+        </tr>
+        <tr>
+            <td><button (click)="changeUser()">Potvrdi izmene</button></td>
+            <td>
+                <p>{{message}}</p>
+            </td>
+        </tr>
+
+
+    </table>
+
+    <table *ngIf=" user.readBook.length > 0 ">
+        <caption><b>Pročitane knjige</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Autor(i)</th>
+            <th>Žanr</th>
+            <th>Pogledaj knjigu</th>
+        </tr>
+        <tr *ngFor=" let book of user.readBook">
+            <td *ngIf="book!=null">
+                <p>{{book.name}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let author of book.authors">{{author}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let genre of book.genres">{{genre}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p>
+                    <a (click)='navigateToBook(book.name)'>Link do knjige</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+    <table *ngIf=" user.readingBook.length >0 ">
+        <caption><b>Knjige koje se čitaju</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Autor(i)</th>
+            <th>Žanr</th>
+            <th>Pogledaj knjigu</th>
+        </tr>
+        <tr *ngFor=" let book of user.readingBook">
+            <td *ngIf="book!=null">
+                <p>{{book.name}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let author of book.authors">{{author}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let genre of book.genres">{{genre}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p>
+                    <a (click)='navigateToBook(book.name)'>Link do knjige</a>
+                </p>
+            </td>
+            <td>
+                <button (click)="deleteReadingBook(book.name)">Ukloni iz liste</button>
+            </td>
+        </tr>
+    </table>
+    <table *ngIf=" user.wannaReadBook.length >0 ">
+        <caption><b>Knjige koje želite da čitate</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Autor(i)</th>
+            <th>Žanr</th>
+            <th>Pogledaj knjigu</th>
+        </tr>
+        <tr *ngFor=" let book of user.wannaReadBook">
+            <td *ngIf="book!=null">
+                <p>{{book.name}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let author of book.authors">{{author}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let genre of book.genres">{{genre}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p>
+                    <a (click)='navigateToBook(book.name)'>Link do knjige</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption><b>Komentari</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Opis</th>
+            <th>Ocena</th>
+        </tr>
+        <tr *ngFor="let comment of comments">
+            <td *ngIf="comment!=null">
+                <a (click)="navigateToBook(comment.book)">
+                    <p>{{comment.book}}</p>
+                </a>
+            </td>
+            <td *ngIf="comment!=null">
+                <p>{{comment.description}}</p>
+            </td>
+            <td *ngIf="comment!=null">
+                <p>{{comment.grade}}</p>
+            </td>
+        </tr>
+    </table>
+
+    <input type='text' name='filter.name' [(ngModel)]='filterName' (input)="filters()" placeholder="Pretraga po nazivu" />
+
+    <input type='text' name='filter.author' [(ngModel)]='filterAuthor' (input)="filters()" placeholder="Pretraga po autoru"> Pretraga po žanru
+    <select type="text" name="filter.genre" [(ngModel)]="filterGenre" (click)="filters()">
+        <option value=""  selected="selected">Izabarite</option>
+  <option *ngFor="let genre of genres" [value]='genre.name'>{{genre.name}}</option>
+  <option [value]="'svi'" >SVI</option>
+</select>
+
+
+    <table *ngIf="!newBook">
+        <caption><b>Knjige u sistemu</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Autor(i)</th>
+            <th>Žanr</th>
+            <th>Pogledaj knjigu</th>
+        </tr>
+        <tr *ngFor=" let book of booksView" [style.color]="book.approved == true ? 'black' : 'silver'">
+            <td *ngIf="book!=null">
+                <p>{{book.name}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let author of book.authors">{{author}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let genre of book.genres">{{genre}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngIf="book.approved">
+                    <a (click)='navigateToBook(book.name)'>Link do knjige</a>
+                </p>
+                <input *ngIf="!book.approved && userType == 'moderator' " type="button" value="Odobri" (click)="aproveBook(book)">
+            </td>
+        </tr>
+    </table>
+    <table *ngIf="newBook">
+        <caption><b>Unos nove knjige u sistem</b></caption>
+        <tr>
+            Unesite naziv knjige <input type='text' name='newBook.name' [(ngModel)]='newBookName'>
+        </tr>
+        <tr>
+            Izaberite sliku knjige <input type="file" name='newBook.picture' (change)="handleFileInput($event.target.files)">
+        </tr>
+        <tr>
+            Unesite autore <input type='text' name='newBook.authors' [(ngModel)]='newBookAuthors'> <br>(Razdvojte autore zarezom ako ih ima više)
+        </tr>
+        <tr>
+            Izaberite žanrove
+            <select type="text" name="newBook.genre" [(ngModel)]="newBookGenres" #type='ngModel' multiple>
+            <option *ngFor="let genre of genres" [value]='genre.name'>{{genre.name}}</option>
+
+          </select>
+        </tr>
+        <tr>
+            Unesite datum izdavanja knjige <input type='date' name='newBook.date' [(ngModel)]='newBookDate'>
+        </tr>
+        <tr>
+            Unesite kratak opis knjige <input type='text' name='newBook.desc' [(ngModel)]='newBookDesc'>
+        </tr>
+        <tr>
+            <button (click)="insertNewBook()">Unesite novu knjigu</button>
+        </tr>
+    </table>
+
+</div>

@@ -1,0 +1,43 @@
+<div id="promenaLozinke">
+    <h1>Dobrodošli {{user.name}}</h1>
+    <form #FormaChangePass='ngForm' id="form" (ngSubmit)="changePass() && FormaChangePass.form.valid">
+        <table>
+            <tr>
+                <td>Stara Lozinka:</td>
+                <td>
+                    <input type='password' name='password' [(ngModel)]='oldPass' #password='ngModel' pattern="^([a-zA-Z].*).{7,}$" (click)='message=""' required>
+                    <p *ngIf="FormaChangePass.submitted && password.invalid">
+                        <span *ngIf="password.errors.pattern">Nije dobar patern</span>
+                        <span *ngIf="!password.errors.pattern">Morate uneti lozinku</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Nova Lozinka:</td>
+                <td>
+                    <input type='password' name='password' [(ngModel)]='newPass' #password='ngModel' pattern="^([a-zA-Z].*).{7,}$" (click)='message=""' required>
+                    <p *ngIf="FormaChangePass.submitted && password.invalid">
+                        <span *ngIf="password.errors.pattern">Nije dobar patern</span>
+                        <span *ngIf="!password.errors.pattern">Morate uneti lozinku</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Ponovite lozinku:</td>
+                <td>
+                    <input type='password' name='passwordconfirm' [(ngModel)]='secpassword' #passwordconfirm='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaChangePass.submitted">
+                        <span *ngIf="!checkPass()">Ne podudaraju se lozinke</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+
+                    <input id="submitBtn" type="submit" value="Promeni lozinku">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

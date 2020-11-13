@@ -1,0 +1,73 @@
+    #registracija h1 {
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        color: #9F6426;
+        font-family: 'Raleway', sans-serif;
+        margin-top: 30px;
+    }
+    
+    table {
+        margin: 0px auto;
+        margin-top: 30px;
+    }
+    
+    table tr {
+        font-size: 23px;
+        color: #9F6426;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    table tr p {
+        font-size: 17px;
+        font-weight: bold;
+        color: #9F2926;
+    }
+    
+    input {
+        width: 90%;
+        border: 1px solid #9F6426;
+        border-radius: 10px;
+        height: 27px;
+    }
+    
+    #porukaReg {
+        text-align: center;
+        width: 100%;
+        color: #9F2926;
+        font-size: 27px;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+    
+    #dugmeReg {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    #dugmeReg input {
+        font-size: 20px;
+        color: black;
+        font-weight: bold;
+        margin: 5px 5px;
+        width: 150px;
+        height: 40px;
+        border-radius: 10px;
+        background-color: #9F6426;
+        border: 1px solid #9F6426;
+        margin: 0px auto;
+        margin-right: 8px;
+    }
+    
+    #dugmeReg input:hover {
+        background-color: #D1A97F;
+    }
+    
+    #dugmeReg a {
+        font-size: 20px;
+        border-bottom: 2px solid #9F2926;
+        font-weight: bold;
+    }

@@ -1,0 +1,66 @@
+#neulogovan {
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+#neulogovan h1 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 35px;
+    color: #9F6426;
+}
+
+#neulogovan h3 {
+    text-align: center;
+    font-size: 23px;
+    font-family: 'Raleway', sans-serif;
+    color: #9F2926;
+}
+
+#neulogovan input {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+}
+
+#neulogovan select {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+}
+
+#neulogovan table {
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #9F6426;
+    border: 2px solid #9F2926;
+    width: 70%;
+    border-radius: 10px;
+}
+
+#neulogovan table caption {
+    text-align: center;
+    font-size: 23px;
+    font-family: 'Raleway', sans-serif;
+    color: #9F2926;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#neulogovan table th {
+    color: black;
+    font-size: 20px;
+    border: 2px solid #9F2926;
+}
+
+#neulogovan table td {
+    border: 2px solid #9F2926;
+}

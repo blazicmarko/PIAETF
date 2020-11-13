@@ -1,0 +1,86 @@
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+#ulogovan {
+    width: 100%;
+    margin: 0px auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+#ulogovan h1 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 35px;
+    color: #9F6426;
+}
+
+#ulogovan table {
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #9F6426;
+    border: 2px solid #9F2926;
+    width: 50%;
+    border-radius: 10px;
+}
+
+#ulogovan table th {
+    font-size: 20px;
+    border: 2px solid #9F2926;
+}
+
+#ulogovan table caption {
+    text-align: center;
+    font-size: 23px;
+    font-family: 'Raleway', sans-serif;
+    color: #9F2926;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#ulogovan table td {
+    border: 2px solid #9F2926;
+    font-size: 20px;
+}
+
+#ulogovan input {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+}
+
+#ulogovan select {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+}
+
+#ulogovan button {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+    background-color: #9F2926;
+}
+
+#ulogovan button:hover {
+    background-color: #9F6426;
+    border: 2px solid #9F2926;
+}
+
+#ulogovan h3,
+h4 {
+    font-size: 20px;
+    color: #9F6426;
+    font-family: 'Raleway', sans-serif;
+}

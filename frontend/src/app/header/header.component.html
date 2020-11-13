@@ -1,0 +1,16 @@
+<div id="heder">
+    <div id="logo">
+        <i class="fas fa-book-open"></i>
+    </div>
+    <div id="meni">
+        <ul>
+            <li *ngIf="currentPage=='/guest' || currentPage=='/register' || currentPage=='/forgotPass' "><a href="/">Login</a></li>
+            <li *ngIf="currentPage=='/' || currentPage=='/guest'"><a href="/register">Registracija</a></li>
+            <li *ngIf="currentPage=='/'"><a href="/forgotPass">Zaboravljena lozinka</a></li>
+            <li *ngIf="currentPage=='/'"><a href="/guest">Gost</a></li>
+            <li *ngIf="currentPage=='/user' || currentPage=='/admin' "><a href="/user/password">Promena lozinke</a></li>
+            <li *ngIf="currentPage=='/book' || currentPage=='/user' || currentPage=='/user/password' || currentPage=='/userView'"><a href="/user">Moj Profil</a></li>
+            <li *ngIf="currentPage=='/book' || currentPage=='/user' || currentPage=='/admin' || currentPage=='/user/password' || currentPage=='/userView'"><a (click)="logout()">Logout</a></li>
+        </ul>
+    </div>
+</div>

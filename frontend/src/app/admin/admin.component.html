@@ -1,0 +1,306 @@
+<div id="admin">
+    <h1>
+        Administrator:
+    </h1>
+    <p> {{message}} </p>
+    <br>
+    <div style="display: inline-block;">
+        <input type="button" class="dugme" value="Svi korisnici" (click)="showUsers()">
+        <input type="button" class="dugme" value="Zahtevi" (click)="showRequests()">
+        <input type="button" class="dugme" value="Dodaj korisnika" (click)="showAddUser()">
+        <input type="button" class="dugme" value="Dodaj knjigu" (click)="showAddBook()">
+        <input type="button" class="dugme" value="Pogledaj sve knjige" (click)="showBooks()">
+        <input type="button" class="dugme" value="Zanrovi" (click)="showChangeGenre()">
+    </div>
+    <br>
+
+    <div *ngIf="userViews==true">
+        <br>
+        <br>
+        <table *ngIf="!usersEmpty">
+            <caption><b>Korisnici u sitemu</b></caption>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Korisnicko ime</th>
+                <th>Tip</th>
+            </tr>
+            <tr *ngFor=" let user of users">
+                <td *ngIf="user!=null">
+                    <h4>{{user.name}}</h4>
+                </td>
+                <td *ngIf="user!=null">
+                    <h4>{{user.surname}}</h4>
+                </td>
+                <td *ngIf="user!=null">
+                    <h4>{{user.username}}</h4>
+                </td>
+                <td *ngIf="user!=null">
+                    <select type="text" class="users" name="tip" [(ngModel)]="user.type" #type='ngModel' (click)='msg=""'>
+                      <option>admin</option>
+                      <option>moderator</option>
+                      <option>user</option>
+                    </select>
+                </td>
+                <td *ngIf="user!=null">
+                    <input type="button" class="btn dugme" value="OBRISI" (click)="deleteIt(user.username)">
+                </td>
+                <td *ngIf="user!=null">
+                    <input type="button" class="btn dugme" value="AZURIRAJ" (click)="updateIt(user)">
+                </td>
+            </tr>
+        </table>
+        <p *ngIf="usersEmpty">Nema korisnika!</p>
+    </div>
+
+
+    <div *ngIf="requestViews==true">
+        <br>
+        <br>
+        <table *ngIf="!requestsEmpty">
+            <caption><b>Zahtevi za registraciju</b></caption>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Korisnicko ime</th>
+                <th>Lozinka</th>
+                <th>Datum rođenja</th>
+                <th>Grad</th>
+                <th>Država</th>
+                <th>Mejl</th>
+                <th>Tip</th>
+            </tr>
+            <tr *ngFor=" let request of requests">
+                <td *ngIf="request!=null">
+                    <h4>{{request.name}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.surname}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.username}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.password}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.date}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.city}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.state}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4> {{request.mail}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <h4>{{request.type}}</h4>
+                </td>
+                <td *ngIf="request!=null">
+                    <input type="button" class="btnReq dugme" value="ODOBRI" (click)="approveRequest(request.username)">
+                </td>
+                <td *ngIf="request!=null">
+                    <input type="button" class="btnReq dugme" value="ODBIJ" (click)="denyRequest(request.username)">
+                </td>
+            </tr>
+        </table>
+        <p *ngIf="requestsEmpty">Trenutno nema zahteva</p>
+    </div>
+
+    <div *ngIf="addUserView==true">
+        <form #FormaNewUser='ngForm' id="form" (ngSubmit)="insertNew() && FormaNewUser.form.valid ">
+            <table>
+                <tr>
+                    <td>Ime:</td>
+                    <td>
+                        <input type='text' name='name' [(ngModel)]='newUser.name' #name='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && name.invalid">
+                            Morate uneti ime
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td>
+                        <input type='text' name='surname' [(ngModel)]='newUser.surname' #surname='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && surname.invalid">
+                            Morate uneti prezime
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Korisničko ime:</td>
+                    <td>
+                        <input type='text' name='username' [(ngModel)]='newUser.username' #username='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && username.invalid">
+                            Morate uneti korisničko ime
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lozinka:</td>
+                    <td>
+                        <input type='password' name='password' [(ngModel)]='newUser.password' #password='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && password.invalid">
+                            <span>Morate uneti lozinku</span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Datum rođenja:</td>
+                    <td>
+                        <input type="date" name='date' [(ngModel)]='newUser.date' #date='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && date.invalid">
+                            Morate uneti datum rođenja
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Grad:</td>
+                    <td>
+                        <input type="text" name='city' [(ngModel)]='newUser.city' #city='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && city.invalid">
+                            Morate uneti grad u kom živite
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Drzava:</td>
+                    <td>
+                        <input type="text" name='state' [(ngModel)]='newUser.state' #state='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && state.invalid">
+                            Morate uneti državu u kojoj živite
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mail:</td>
+                    <td>
+                        <input type='text' name='mail' [(ngModel)]='newUser.mail' #mail='ngModel' (click)='message=""' required>
+                        <p *ngIf="FormaNewUser.submitted && mail.invalid">
+                            Morate uneti mail
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input id="submitBtn" class="dugme" type="submit" value="Unesi novog korisnika">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+
+    <div *ngIf="addNewBook==true">
+        <table>
+            <caption><b>Unos nove knjige u sistem</b></caption>
+            <tr>
+                Unesite naziv knjige <input type='text' name='newBook.name' [(ngModel)]='newBookName'>
+            </tr>
+            <tr>
+                Izaberite sliku knjige <input type="file" name='newBook.picture' (change)="handleFileInput($event.target.files)">
+            </tr>
+            <tr>
+                Unesite autore <input type='text' name='newBook.authors' [(ngModel)]='newBookAuthors'><br> (Razdvojte autore zarezom ako ih ima više)
+            </tr>
+            <tr>
+                Izaberite žanrove
+                <select type="text" name="newBook.genre" [(ngModel)]="newBookGenres" #type='ngModel' multiple>
+              <option *ngFor="let genre of genres" [value]='genre.name'>{{genre.name}}</option>
+
+            </select>
+            </tr>
+            <tr>
+                Unesite datum izdavanja knjige <input type='date' name='newBook.date' [(ngModel)]='newBookDate'>
+            </tr>
+            <tr>
+                Unesite kratak opis knjige <input type='text' name='newBook.desc' [(ngModel)]='newBookDesc'>
+            </tr>
+            <tr>
+                <button (click)="insertNewBook()">Unesite novu knjigu</button>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="showBook==true" class='table-responsive'>
+        <div id="first">
+            <table id="myTable" class="display table">
+                <caption><b>Knjige u sitemu</b></caption>
+                <tr>
+                    <th>Naziv</th>
+                    <th>Autor(i)</th>
+                    <th>Žanr</th>
+                    <th>Odobri knjigu</th>
+                    <th>Izmeni knjigu</th>
+                </tr>
+                <tr *ngFor=" let book of booksView" [style.color]="book.approved == true ? 'black' : 'silver'">
+                    <td *ngIf="book!=null">
+                        <h4>{{book.name}}</h4>
+                    </td>
+                    <td *ngIf="book!=null">
+                        <h4 *ngFor="let author of book.authors">{{author}}</h4>
+                    </td>
+                    <td *ngIf="book!=null">
+                        <h4 *ngFor="let genre of book.genres">{{genre}}</h4>
+                    </td>
+                    <td *ngIf="book!=null">
+                        <p *ngIf="book.approved">Odobrena</p>
+                        <input *ngIf="!book.approved" type="button" value="Odobri" class="dugme" (click)="aproveBook(book)">
+                    </td>
+                    <td *ngIf="book!=null">
+
+                        <input type="button" class="dugme" value="Izmeni" (click)=" bookCng = true">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="second">
+            <table *ngIf="bookCng">
+                <tr>
+                    Unesite naziv knjige <input type='text' name='newBook.name' [(ngModel)]='newBookName'>
+                </tr>
+                <tr>
+                    Unesite autore <input type='text' name='newBook.authors' [(ngModel)]='newBookAuthors'><br> (Razdvojte autore zarezom ako ih ima više)
+                </tr>
+                <tr>
+                    Izaberite žanrove
+                    <select type="text" name="newBook.genre" [(ngModel)]="newBookGenres" #type='ngModel' multiple>
+          <option *ngFor="let genre of genres" [value]='genre.name'>{{genre.name}}</option>
+
+        </select>
+                </tr>
+                <tr>
+                    Unesite datum izdavanja knjige <input type='date' name='newBook.date' [(ngModel)]='newBookDate'>
+                </tr>
+                <tr>
+                    Unesite kratak opis knjige <input type='text' name='newBook.desc' [(ngModel)]='newBookDesc'>
+                </tr>
+                <tr>
+                    <button (click)="cngBook()">Izmenite knjigu</button>
+                </tr>
+                <tr>
+                    <button (click)="bookCng = false">Zatvori izmene</button>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div *ngIf="changeGenre==true">
+        <table>
+            <caption><b>Promena zanra</b></caption>
+            <tr *ngFor='let genre of genres'>
+                <td *ngIf="genre!=null">
+                    <h4>{{genre.name}}</h4>
+                </td>
+                <td><button (click)="deleteGenre(genre)">Izbaci</button></td>
+            </tr>
+            <tr>
+                <td><input type='text' name='newGenre' [(ngModel)]='newGenre'></td>
+                <td><button (click)="insertNewGenre()">Ubaci novi zanr</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

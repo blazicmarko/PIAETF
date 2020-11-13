@@ -1,0 +1,126 @@
+<head>
+    <meta charset="utf-8">
+    <title>Login Form</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<div id="registracija">
+    <h1> Registracija:
+    </h1>
+    <form #FormaRegister='ngForm' id="form" (ngSubmit)="register() && FormaRegister.form.valid" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Ime:</td>
+                <td>
+                    <input type='text' name='name' [(ngModel)]='user.name' #name='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && name.invalid">
+                        Morate uneti ime
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Prezime:</td>
+                <td>
+                    <input type='text' name='surname' [(ngModel)]='user.surname' #surname='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && surname.invalid">
+                        Morate uneti prezime
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Slika profila:</td>
+                <td>
+                    <input type="file" id="myfile" name="picture" (change)="handleFileInput($event.target.files)">
+                </td>
+            </tr>
+            <tr>
+                <td>Korisničko ime:</td>
+                <td>
+                    <input type='text' name='username' [(ngModel)]='user.username' #username='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && username.invalid">
+                        Morate uneti korisničko ime
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Lozinka:</td>
+                <td>
+                    <input type='password' name='password' [(ngModel)]='user.password' #password='ngModel' pattern="^([a-zA-Z].*).{7,}$" (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && password.invalid">
+                        <span *ngIf="password.errors.pattern">Nije dobar patern</span>
+                        <span *ngIf="!password.errors.pattern">Morate uneti lozinku</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Ponovite lozinku:</td>
+                <td>
+                    <input type='password' name='passwordconfirm' [(ngModel)]='secpassword' #passwordconfirm='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted">
+                        <span *ngIf="!checkPass()">Ne podudaraju se lozinke</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Datum rođenja:</td>
+                <td>
+                    <input type="date" name='date' [(ngModel)]='user.date' #date='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && date.invalid">
+                        Morate uneti datum rođenja
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Grad:</td>
+                <td>
+                    <input type="text" name='city' [(ngModel)]='user.city' #city='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && city.invalid">
+                        Morate uneti grad u kom živite
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Država:</td>
+                <td>
+                    <input type="text" name='state' [(ngModel)]='user.state' #state='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && state.invalid">
+                        Morate uneti državu u kojoj zivite
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>Mail:</td>
+                <td>
+                    <input type='text' name='mail' [(ngModel)]='user.mail' #mail='ngModel' (click)='message=""' required>
+                    <p *ngIf="FormaRegister.submitted && mail.invalid">
+                        Morate uneti mail
+                    </p>
+                </td>
+            </tr>
+            <tr id="recaptcha">
+                <td></td>
+                <td>
+                    <div class="recaptcha">
+                        <re-captcha (resolved)="resolved($event)" siteKey="6LewW7oZAAAAAGk-cATvRrJwUveSi6vGLeJ8zlpD">
+                        </re-captcha>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+        <div id="dugmeReg">
+            <input id="submitBtn" type="submit" value="Registruj se">
+            <a routerLink=''>Nazad</a>
+        </div>
+
+
+        <p id="porukaReg">
+            {{message}}
+        </p>
+
+
+
+    </form>
+
+
+</div>

@@ -1,0 +1,68 @@
+<div id="neulogovan">
+    <h1>Dobrodošli</h1>
+    <a href="/register">
+        <h3>Da li ste se predomislili i hoćete da se registrujete?</h3>
+    </a>
+
+    <input type='text' name='filter.name' [(ngModel)]='name' (input)="filters()" placeholder=" Pretraga po nazivu">
+    <input type='text' name='filter.author' [(ngModel)]='author' (input)="filters()" placeholder=" Pretraga po autoru"> Pretraga po žanru
+    <select type="text" name="filter.genre" [(ngModel)]="genre" (click)="filters()">
+      <option value=""  selected="selected">Izabarite</option>
+      <option *ngFor="let genre of genres" [value]='genre.name'>{{genre.name}}</option>
+      <option [value]="'svi'" >SVI</option>
+    </select>
+
+
+    <br>
+    <br>
+
+
+    <table>
+        <caption><b>Knjige u sitemu</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Autor(i)</th>
+            <th>Žanr</th>
+            <th>Pogledaj knjigu</th>
+        </tr>
+        <tr *ngFor=" let book of booksView" [style.color]="book.approved == true ? 'black' : 'silver'">
+            <td *ngIf="book!=null">
+                <p>{{book.name}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let author of book.authors">{{author}}</p>
+            </td>
+            <td *ngIf="book!=null">
+                <p *ngFor="let genre of book.genres">{{genre}}</p>
+            </td>
+            <td *ngIf="book!=null && book.approved">
+                <p>
+                    <a (click)='navigateToBook(book.name)'>Link do knjige</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <caption><b>Događaji u sistemu</b></caption>
+        <tr>
+            <th>Naziv</th>
+            <th>Datum početka</th>
+            <th>Datum kraja</th>
+            <th>Opis</th>
+        </tr>
+        <tr *ngFor="let event of events">
+            <td *ngIf="event!=null && this.actualDate.getTime() < event.dateFrom.getTime()">
+                <p>{{event.name}}</p>
+            </td>
+            <td *ngIf="event!=null && this.actualDate.getTime() < event.dateFrom.getTime()">
+                <p>{{event.dateFrom | date: 'dd/MM/yyyy'}}</p>
+            </td>
+            <td *ngIf="event!=null && this.actualDate.getTime() < event.dateFrom.getTime()">
+                <p>{{event.dateTo | date: 'dd/MM/yyyy'}}</p>
+            </td>
+            <td *ngIf="event!=null && this.actualDate.getTime() < event.dateFrom.getTime()">
+                <p>{{event.description}}</p>
+            </td>
+        </tr>
+    </table>
+</div>

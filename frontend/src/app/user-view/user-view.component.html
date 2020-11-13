@@ -1,0 +1,55 @@
+<h1>
+    Dobrodosi na profil {{toFollow.name}}</h1>
+<h3>Podaci profila</h3>
+
+<table>
+    <tr>
+        <td>Ime:</td>
+        <td>
+            {{toFollow.name}}
+        </td>
+    </tr>
+    <tr>
+        <td>Prezime:</td>
+        <td>
+            {{toFollow.surname}}
+        </td>
+    </tr>
+    <tr>
+        <td>Slika profila:</td>
+        <td>
+            <img [src]='toFollow.picture'>
+        </td>
+    </tr>
+    <tr>
+        <td>Korisnicko ime:</td>
+        <td>
+            {{toFollow.username}}
+        </td>
+    </tr>
+    <tr>
+        <td>Datum rodjenja:</td>
+        <td>
+            {{toFollow.date | date: "dd/MM/yyyy"}}
+        </td>
+    </tr>
+    <tr>
+        <td>Grad:</td>
+        <td>
+            {{toFollow.city}}
+        </td>
+    </tr>
+    <tr>
+        <td>Drzava:</td>
+        <td>
+            {{toFollow.state}}
+        </td>
+    </tr>
+    <tr>
+        <td>Mail:</td>
+        <td>
+            {{toFollow.mail}}
+        </td>
+    </tr>
+    <button *ngIf="this.toFolloww != this.followerr" (click)='follow()'>Zaprati korisnika</button>
+    <p>{{message}}</p>

@@ -1,0 +1,80 @@
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+}
+
+h1,
+h3 {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 35px;
+    color: #9F6426;
+}
+
+table {
+    margin: 0px auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #9F6426;
+    border: 2px solid #9F2926;
+    width: 50%;
+    border-radius: 10px;
+}
+
+table th {
+    font-size: 20px;
+    border: 2px solid #9F2926;
+}
+
+table caption {
+    text-align: center;
+    font-size: 23px;
+    font-family: 'Raleway', sans-serif;
+    color: #9F2926;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+table td {
+    border: 2px solid #9F2926;
+    font-size: 20px;
+}
+
+input {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+}
+
+select {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+}
+
+button {
+    width: 180px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #9F6426;
+    margin-right: 15px;
+    background-color: #9F2926;
+}
+
+button:hover {
+    background-color: #9F6426;
+    border: 2px solid #9F2926;
+}
+
+h3,
+h4 {
+    font-size: 20px;
+    color: #9F6426;
+    font-family: 'Raleway', sans-serif;
+}

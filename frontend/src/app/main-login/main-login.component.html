@@ -1,0 +1,44 @@
+<div id="prvi">
+    <div id="welcome">
+        <h1>Dobrodošli na sajt za ljubitelje knjiga</h1>
+    </div>
+    <!-- <img src='../../assets/pozadina.jpg'> -->
+    <div id="login">
+        <a routerLink='/guest'>
+            <h3 id="neregistrovan">Želite da pristupite kao neregistrovan korisnik(gost)?</h3>
+        </a>
+        <h3 id="registrovan">Forma za prijavu</h3>
+        <form>
+            <table id="tabelaLogin">
+                <tr>
+                    <td class="userLog">Username:</td>
+                    <td>
+                        <input type='text' [(ngModel)]='username' name='username'>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="userLog">Password:</td>
+                    <td>
+                        <input type='password' [(ngModel)]='password' name='password'>
+                    </td>
+                </tr>
+            </table>
+            <div id="dugmeLog">
+                <button (click)='login()'>Login</button>
+                <a routerLink='/register'>Register</a>
+            </div>
+
+
+
+
+
+
+        </form>
+        <h3 id="forgotPass">Zaboravili ste lozinku? <a routerLink='/forgotPass'>Klikni ovde</a></h3>
+        <p id="porukaLog">
+            {{message}}
+        </p>
+
+    </div>
+
+</div>
